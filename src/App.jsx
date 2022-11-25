@@ -1,10 +1,14 @@
+import { useState } from "react"
+import { Snackbar } from "./Snackbar"
+
 function App() {
+  const [snackbarVisible, setSnackbarVisible] = useState(false)
   return (
-    <main className="grid place-items-center h-screen text-6xl font-semibold">
-        <h1>
-            <p className="text-center my-6 text-5xl">Sample Project</p> 
-            <p>Vite + React + Tailwind CSS</p>
-        </h1>
+    <main className="container mx-auto">
+      {snackbarVisible && <Snackbar visible={snackbarVisible} setVisible={setSnackbarVisible} />}
+      <div className="flex w-full justify-center mt-48">
+        <button className="border border-gray px-8 py-5 rounded" onClick={() => setSnackbarVisible(!snackbarVisible)}>Show Snackbar</button>
+      </div>
     </main>
   )
 }
